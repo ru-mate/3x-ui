@@ -1,7 +1,7 @@
 # ========================================================
 # Stage: Builder
 # ========================================================
-FROM golang:1.23-alpine AS builder
+FROM golang:1.23-bookworm AS builder
 WORKDIR /app
 ARG TARGETARCH
 
@@ -21,8 +21,8 @@ RUN ./DockerInit.sh "$TARGETARCH"
 # ========================================================
 # Stage: Final Image of 3x-ui
 # ========================================================
-FROM alpine
-ENV TZ=Asia/Tehran
+FROM bookworm
+ENV TZ=Europe/Moscow
 WORKDIR /app
 
 RUN apk add --no-cache --update \
